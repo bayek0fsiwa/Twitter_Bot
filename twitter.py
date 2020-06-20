@@ -7,7 +7,7 @@ auth = tweepy.OAuthHandler('Api Key', 'APi secret key')
 auth.set_access_token('acces token', 'access token secret')
 
 #Don't Get Banned Add Time Limit For Making Request Through API
-api = tweepy.api(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
+api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
 #Authenticate
 user = api.me()
@@ -23,6 +23,7 @@ for tweet in tweepy.Cursor(api.search, search).items(numberTweets):
         print('Tweet Liked')
         tweet.favorite()
         time.sleep(3)
+        print('Tweet Retweeted')
         tweet.Retweet()
         time.sleep(10)
     except tweepy.TweepError as e:
